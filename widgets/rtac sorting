@@ -40,7 +40,7 @@ var refreshIntervalId = setInterval( function() {
                      $(this).find('tbody tr').first().toggle().attr("class","sel-rtac-first");
                      
                        
-                  });
+                  
                 }
             });
         
