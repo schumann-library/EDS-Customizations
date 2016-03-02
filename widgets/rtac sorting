@@ -4,7 +4,7 @@
  $('.related-info-area:contains("Adjusting Location Display...")', window.parent.document).css('display','none');
 var count = 0;
 var locationToShow = $('#locationtoshow').text().trim();
-var numToShow = 1;
+
 
 var refreshIntervalId = setInterval( function() {
     count++;
@@ -18,7 +18,7 @@ var refreshIntervalId = setInterval( function() {
             
                 // Check that the table contains a holding from the target location
                 if ($(this).find('tr:contains("'+locationToShow+'")').length > 0) {
-                    var foundone = 0;
+                    
                     
                     //hide all of the rtac rows in the table
                     $(this).find('tbody tr').css("display","none");
