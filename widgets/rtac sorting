@@ -12,20 +12,35 @@ var refreshIntervalId = setInterval( function() {
         clearInterval(refreshIntervalId);
     } else {
         if ($(".circulation tbody tr",window.top.document).length > 0) {
+        
+        //for each rtac location table that contains multiple holdings...
             $('div.rtac:contains("Show More")',window.top.document).each(function(){
+            
+                // Check that the table contains a holding from the target location
                 if ($(this).find('tr:contains("'+locationToShow+'")').length > 0) {
                     var foundone = 0;
+                    
+                    //hide all of the rtac rows in the table
                     $(this).find('tbody tr').css("display","none");
+                    
+                    //remove all of the classes from rtac rows
                     $(this).find('tbody tr').attr("class","");
+                    
+                    //show the 'show more' row
                     $(this).find('tr:contains("Show More")').css("display","");
+                    
+                    //for each row matching our target location...
                     $(this).find('tr:contains("'+locationToShow+'")').each(function(){
-                     $(this).prependTo($(this).parent());  
-                        if (foundone < numToShow) {
-                            foundone++;
-                            $(this).css("display","");
-                            $(this).attr("class","sel-rtac-first");
-                        }
-                    });
+                    
+                    	 // move it to the first position within the table body 
+                  	   $(this).prependTo($(this).parent());
+                  	)};
+                     
+                     //display the first row in the table
+                     $(this).find('tbody tr').first().toggle().attr("class","sel-rtac-first");
+                     
+                       
+                  });
                 }
             });
         
