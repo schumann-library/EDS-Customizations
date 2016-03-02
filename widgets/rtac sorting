@@ -34,7 +34,7 @@ var refreshIntervalId = setInterval( function() {
                     
                     	 // move it to the first position within the table body 
                   	   $(this).prependTo($(this).parent());
-                  	)};
+                  	});
                      
                      //display the first row in the table
                      $(this).find('tbody tr').first().toggle().attr("class","sel-rtac-first");
