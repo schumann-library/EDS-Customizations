@@ -1,0 +1,76 @@
+<script type="text/javascript" language="Javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+  var count = 0;
+  var tables = 0;
+  var textofrow = '';
+  var iterate = 0;
+
+  // hide the widget
+  $('.related-info-area:contains("Adjusting Location Display...")', window.parent.document).css('display','none');
+
+  // start waiting for rtac.  only wait for 30 seconds, then give up
+  var refreshIntervalId = setInterval( function() {
+
+      // this is counting to see if it should give up
+      iterate++;
+      
+      // check to see if there are any RTAC tables
+      if ($('table.rtac-table',window.parent.document).size() > 0) {
+        
+      // if there are RTAC tables, stop waiting, and start executing the following code
+      clearInterval(refreshIntervalId);
+      
+      // for each table
+      $('table.rtac-table',window.parent.document).each(function(){
+        count = 0;
+        tables += 1;
+        
+        // for each non-header row in each table
+        try {
+        $(this).find('tbody tr').each(function(){
+            textofrow = $(this).text();
+            if (!(textofrow.indexOf("Show More") > 0)) {
+              
+              // hide the row if it's not the SHOW MORE row
+              $(this).css("display","none");
+              
+              // remove any class - usually the first one returned has a class of sel-rtac-first
+              $(this).attr("class","");
+            }
+          });
+        } catch (err) {
+            console.debug("Error: " + err.message);
+          }
+    
+            // find the first row that has Wentworth in it
+		        // toggle their display
+		        // give it the 'first row' class so it interacts with 'show more' correctly
+            try {
+              $(this).find('tbody tr:contains("Wentworth")').first().toggle().attr("class","sel-rtac-first");
+              //for each wentworth result, move it to the top of the order
+              $(this).find('tbody tr:contains("Wentworth")').each(function(){ 
+		            $(this).prependTo($(this).parent());
+                count += 1;
+	            });
+            } catch (err) {
+              console.debug("Error: " + err.message);
+              }
+
+        if (count == 0) {
+          // if there are NO items with the specified location of Wentworth, show just the first one
+          console.debug("NONE COUNTED!");
+          $(this).find('tbody tr:first').each(function(){
+              $(this).css("display","");
+              $(this).attr("class","sel-rtac-first");
+          });  
+        }
+        
+      }); //end for each table
+      }
+      
+      if (iterate > 60) {
+        clearInterval(refreshIntervalId);
+      }
+    }, 500);
+
+</script>
