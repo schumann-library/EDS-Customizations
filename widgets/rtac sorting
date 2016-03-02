@@ -49,4 +49,5 @@ var refreshIntervalId = setInterval( function() {
         } else {
         }
     }
-}, 500)</script>
+}, 500);
+</script>
