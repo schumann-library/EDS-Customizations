@@ -19,7 +19,7 @@ var refreshIntervalId = setInterval( function() {
                     $(this).find('tbody tr').attr("class","");
                     $(this).find('tr:contains("Show More")').css("display","");
                     $(this).find('tr:contains("'+locationToShow+'")').each(function(){
-                       
+                     $(this).prependTo($(this).parent());  
                         if (foundone < numToShow) {
                             foundone++;
                             $(this).css("display","");
