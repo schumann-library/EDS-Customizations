@@ -42,17 +42,16 @@
             console.debug("Error: " + err.message);
         }
     
-        // find the row(s) that have Wentworth in them
+        // find the first row that has Wentworth in it
+		// toggle their display
+		// give it the 'first row' class so it interacts with 'show more' correctly
         try {
-          $(this).find('tbody tr:contains("Wentworth")').each(function(){
-
-              // set these rows to display (by removing the display:none we assigned earlier)
-              $(this).css("display","");
-              
-              // give it the 'first row' class so it interacts with 'show more' correctly
-              $(this).attr("class","sel-rtac-first");
+          $(this).find('tbody tr:contains("Wentworth")').first().toggle().attr("class","sel-rtac-first");
+       //for each wentworth result, move it to the top of the order
+      $(this).find('tbody tr:contains("Wentworth")').each(function(){ 
+		  $(this).prependTo($(this).parent());
               count += 1;
-          });
+	  });
           } catch (err) {
               console.debug("Error: " + err.message);
         }
