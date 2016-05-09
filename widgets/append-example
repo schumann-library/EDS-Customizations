@@ -2,8 +2,12 @@
 
 <script type="text/javascript" language="Javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
-        $("head", window.parent.document).append('<p>hello world</p>')
+/* hide the widget title /*
+$('.related-info-area:contains("Append branding CSS to head element")', window.parent.document).css('display','none');
+
+$(function(){
+/* the string in the append() method has to be on one line or line breaks must be escaped */
+        $("head", window.parent.document).append('<style>img.logo-img{display:inline; margin: 1em; max-width:100%;}.branding-Beside img.logo-img{display:inline;}.customerLogo {display:none;}</style>')
     });
 
 </script>
