@@ -1,0 +1,24 @@
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+$(window.parent).on('scroll', function() {
+
+    var y_scroll_pos = this.pageYOffset;
+   // alert("y_scroll_pos:" + y_scroll_pos);
+    var scroll_pos_test = 3000;             // set to whatever you want it to be
+    var scroll_pos_test_length = 1000;
+
+    if(y_scroll_pos > scroll_pos_test && y_scroll_pos < scroll_pos_test + scroll_pos_test_length) {
+       // alert("you scrolled a certain distance");
+        $("#Placard_springy",this.document).css("opacity","1");
+    }
+    else 
+    {
+      $("#Placard_springy",this.document).css("opacity","0");
+    }
+});
+</script>
