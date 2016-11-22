@@ -57,9 +57,9 @@
 			*/
 		
 		//General placard settings		
-        var placard = '<div id="Placard_springy" style="display:none; border-width:' + springshareParams[9] + ';border-style:' + springshareParams[10] + ';border-color:' + springshareParams[5] + ';background-color:' + springshareParams[6] + ';padding:10px;"><div style="float:left;padding:10px;"></div><span id="Placard_libguides"></span><span id="Placard_libanswers"></span><span id="Placard_libdatabases"></span></div>';
-        var headingstyle = '<div class="springy_heading" style="float:left; padding:5px;"><p><span style="font-size:120%;font-weight:bold;color:' + springshareParams[7] + ';">';
-        var bodystyle = '<span class="springy_result" style="font-size:12px;padding-top:1px;color:' + springshareParams[8] + '">';
+        var placard = '<div id="Placard_springy" style="display:none;"><div></div><span id="Placard_libguides"></span><span id="Placard_libanswers"></span><span id="Placard_libdatabases"></span></div>';
+        var headingstyle = '<div class="springy_heading"><p><span>';
+        var bodystyle = '<span class="springy_result">';
 
         //Where to display placard
         if (springshareParams[12] == 'before') {
