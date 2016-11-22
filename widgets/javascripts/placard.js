@@ -57,7 +57,7 @@
 			*/
 		
 		//General placard settings		
-        var placard = '<div id="Placard_springy" style="display:none;"><div></div><span id="Placard_libguides"></span><span id="Placard_libanswers"></span><span id="Placard_libdatabases"></span></div>';
+        var placard = '<div id="Placard_springy"><div></div><span id="Placard_libguides"></span><span id="Placard_libanswers"></span><span id="Placard_libdatabases"></span></div>';
         var headingstyle = '<div class="springy_heading"><p><span>';
         var bodystyle = '<span class="springy_result">';
 
