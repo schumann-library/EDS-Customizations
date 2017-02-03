@@ -1,0 +1,145 @@
+<!--For JS to work on Full Text Finder,
+DO NOT ENABLE Full Text Finder
+ Resolver in the screens below
+
+Link within HLM with all metadata elements! Hover Text should be: getData
+//http://resolver.ebscohost.com/openurl?&issn={issn}&issn1={issn1}&eissn={eissn}&eissn1={eissn1}&an={an}&doi={doi}&sici={sici}&source={generictitle}&title={atitle}&author={au}&authors={authors}&volume={volume}&issue={issue}&strtpage={spage}&pagect={tpages}&pages={pages}&date={date}&datei={datei}&year={year}&isbn={isbn}&pmid={pmid}&publisher={pub}
+ -->
+
+<style>
+img.logo-img { 
+	display:inline-block; 
+	margin: 1em; 
+	width:500px; 
+	max-width:100%;
+}
+.branding-Beside img.logo-img {
+	display:inline;
+}
+.customerLogo {
+	display:none;
+}
+#footerControl {
+	display: none !important;
+}
+
+/* Styles for citations display */
+
+.open-url-resolver {display:none;}
+
+.main-content {
+    
+    background: rgb(243, 243, 243);
+    padding: 1.5rem;
+    box-shadow: 2px 2px 3px 0px #e7e7e7;
+    border: 1px solid rgba(0,0,0,0.09);
+    border-radius: 3px;
+    margin: 20px;
+    max-width: 500px;
+}
+
+.header-module.media-content {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.myfulltextbutton {
+    float:left;
+    color: white;
+    background: #337ab7;
+    border-color: #2e6da4;
+    margin: 0 20px 0 0;
+}
+.myfulltextbutton:active{
+    color: #fff;
+    background: #286090;
+    border-color: #204d74;
+}
+
+.myfulltextbutton:hover{
+    color: #fff;
+    background: #204d74;
+    border-color: #122b40;
+}
+
+.myfulltextbutton:focus{
+    color: #fff;
+    background: #286090;
+    border-color: #122b40;
+}
+
+.myfulltextbutton + a[data-auto="menu-link"] {
+    display:block;
+}
+
+/*hide icons on links following fulltextbuttons */
+.myfulltextbutton + a[data-auto="menu-link"] img[data-auto="icon"] {
+    display: none;
+}
+
+
+#ftfResults .h2 {
+    display: none;
+}
+
+.media-content {
+	display:block;
+}
+.citationvalues {
+	font-family:helvetica;
+	font-weight:bold;
+	margin-left:20px;
+}
+
+.citationvalues span {
+	font-weight:normal;
+}
+
+/* Available classes currently set to display if not empty*/
+.myauthor, .mysource, .myvolume, .myissue, .mystrtpage, .myyear, .myissn1, .myeissn1, .myisbn, .mypages {
+
+}
+
+/* Classes set to not display*/
+.myan, .mydoi, .mysici, .mypagect, .mydate, .mydatei, .mypmid, .mypublisher {
+	display:none;
+}
+</style>
+
+<script src="https://schumann-library.github.io/eds-customizations/widgets/javascripts/fulltextfindercitationstyle.js" ></script>
+
+<script>
+//add viewport settings to head
+$('head').prepend('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
+
+$( window ).load(function(){
+$('.header-module.media-content').prependTo('.main-content')
+
+//create a button for each fulltext link
+$("h4[data-auto='menu-section-header']:contains('Full Text')").parent().find("a[data-auto='menu-link']").each(function() {
+  $( "<a>", {'class':'btn myfulltextbutton'} ).attr('href', $(this).attr('href')).text('Read Online').insertBefore(this)
+});
+
+//toggle other full text options
+firstFulltextLink = $("h4[data-auto='menu-section-header']:contains('Full Text')").parent().find("li[data-auto='link-container']:first");
+otherFulltextLinks = $("h4[data-auto='menu-section-header']:contains('Full Text')").parent().find("li[data-auto='link-container']:not(:first)").toggle();
+
+if (otherFulltextLinks.length != '0') {
+     
+$('<a>').text('more options').wrap('<div/> {"id" : "more-options-link-wrapper"}').click(function(){
+otherFulltextLinks.toggle();
+$(this).text(function(i, text){
+          return text === "more options" ? "hide options" : "more options";
+      });
+}).appendTo(firstFulltextLink.parent());
+
+}
+
+
+
+$('.open-url-resolver').show();
+
+
+});
+</script>

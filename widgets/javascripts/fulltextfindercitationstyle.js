@@ -58,7 +58,7 @@ var mynewdescript = (myauthor !== '' ? '<p class="citationvalues myauthor">Autho
 mynewdescript += (mysource !== '' ? '<p class="citationvalues mysource">Publication: <span>'+mysource+'</span></p>' :''); 
 mynewdescript += (myvolume !== '' ? '<p class="citationvalues myvolume">Volume: <span>'+myvolume+'</span></p>' :'');
 mynewdescript += (myissue !== '' ? '<p class="citationvalues myissue">Issue: <span>'+myissue+'</span></p>' :'');
-mynewdescript += (mystrtpage !== '' ? '<p class="citationvalues mystrtpage">Start Page: <span>'+mystrtpage+'</span></p>' :'');
+mynewdescript += (mypages !== '' ? '<p class="citationvalues mypages">Pages: <span>'+mypages+'</span></p>' :''); 
 mynewdescript += (myyear !== '' ? '<p class="citationvalues myyear">Year: <span>'+myyear+'</span></p>' :'');
 mynewdescript += (myissn1 !== '' ? '<p class="citationvalues myissn1">ISSN: <span>'+myissn1+'</span></p>' :'');
 mynewdescript += (myeissn1 !== '' ? '<p class="citationvalues myeissn1">Online ISSN: <span>'+myeissn1+'</span></p>' :'');
@@ -67,7 +67,7 @@ mynewdescript += (myisbn !== '' ? '<p class="citationvalues myisbn">ISBN: <span>
 //mynewdescript += (myeissn !== '' ? '<p class="citationvalues myeissn">eISSN: <span>'+myeissn+'</span></p>' :'');
 mynewdescript += (mypublisher !== '' ? '<p class="citationvalues mypublisher">Publisher: <span>'+mypublisher+'</span></p>' :'');
 mynewdescript += (mypagect !== '' ? '<p class="citationvalues mypagect">Page Count: <span>'+mypagect+'</span></p>' :'');
-mynewdescript += (mypages !== '' ? '<p class="citationvalues mypages">Pages: <span>'+mypages+'</span></p>' :''); 
+mynewdescript += (mystrtpage !== '' ? '<p class="citationvalues mystrtpage">Start Page: <span>'+mystrtpage+'</span></p>' :'');
 mynewdescript += (mydate !== '' ? '<p class="citationvalues mydate">Date: <span>'+mydate+'</span></p>' :'');
 mynewdescript += (mydatei !== '' ? '<p class="citationvalues mydatei">Date International: <span>'+mydatei+'</span></p>' :'');
 mynewdescript += (mypmid !== '' ? '<p class="citationvalues mypmid">PMID: <span>'+mypmid+'</span></p>' :''); 
