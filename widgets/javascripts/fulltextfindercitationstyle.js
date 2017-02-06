@@ -1,5 +1,6 @@
 //Need to create link within HLM with all metadata elements! Hover Text should be: getData
 //http://resolver.ebscohost.com/openurl?&issn={issn}&issn1={issn1}&eissn={eissn}&eissn1={eissn1}&an={an}&doi={doi}&sici={sici}&source={generictitle}&title={atitle}&author={au}&authors={authors}&volume={volume}&issue={issue}&strtpage={spage}&pagect={tpages}&pages={pages}&date={date}&datei={datei}&year={year}&isbn={isbn}&pmid={pmid}&publisher={pub}
+//originally created by EBSCO
 
 
 var getData = jQuery("a[title='getData']").attr("href");
@@ -80,7 +81,9 @@ mynewdescript = decodeURIComponent(mynewdescript);
  jQuery("a[title='getData']").parent().css("display","none");
   jQuery("p.descript").after(mynewdescript);
  jQuery("p.descript").remove();
-        
+
+
+     
 $( window ).load(function(){
 $('.header-module.media-content').prependTo('.main-content')
 
