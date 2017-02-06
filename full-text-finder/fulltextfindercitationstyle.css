@@ -1,0 +1,82 @@
+/* Styles for citations display */
+
+.open-url-resolver {display:none;}
+
+.main-content {
+    
+    background: rgb(243, 243, 243);
+    padding: 1.5rem;
+    box-shadow: 2px 2px 3px 0px #e7e7e7;
+    border: 1px solid rgba(0,0,0,0.09);
+    border-radius: 3px;
+    margin: 20px;
+    max-width: 500px;
+}
+
+.header-module.media-content {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.myfulltextbutton {
+    float:left;
+    color: white;
+    background: #337ab7;
+    border-color: #2e6da4;
+    margin: 0 20px 0 0;
+}
+.myfulltextbutton:active{
+    color: #fff;
+    background: #286090;
+    border-color: #204d74;
+}
+
+.myfulltextbutton:hover{
+    color: #fff;
+    background: #204d74;
+    border-color: #122b40;
+}
+
+.myfulltextbutton:focus{
+    color: #fff;
+    background: #286090;
+    border-color: #122b40;
+}
+
+.myfulltextbutton + a[data-auto="menu-link"] {
+    display:block;
+}
+
+/*hide icons on links following fulltextbuttons */
+.myfulltextbutton + a[data-auto="menu-link"] img[data-auto="icon"] {
+    display: none;
+}
+
+
+#ftfResults .h2 {
+    display: none;
+}
+
+.media-content {
+	display:block;
+}
+.citationvalues {
+	font-family:helvetica;
+	font-weight:bold;
+	margin-left:20px;
+}
+
+.citationvalues span {
+	font-weight:normal;
+}
+
+/* Available classes currently set to display if not empty*/
+.myauthor, .mysource, .myvolume, .myissue, .mystrtpage, .myyear, .myissn1, .myeissn1, .myisbn, .mypages {
+
+}
+
+/* Classes set to not display*/
+.myan, .mydoi, .mysici, .mypagect, .mydate, .mydatei, .mypmid, .mypublisher {
+	display:none;
+}
