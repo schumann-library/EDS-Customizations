@@ -81,3 +81,32 @@ mynewdescript = decodeURIComponent(mynewdescript);
   jQuery("p.descript").after(mynewdescript);
  jQuery("p.descript").remove();
         
+$( window ).load(function(){
+$('.header-module.media-content').prependTo('.main-content')
+
+//create a button for each fulltext link
+$("h4[data-auto='menu-section-header']:contains('Full Text')").parent().find("a[data-auto='menu-link']").each(function() {
+  $( "<a>", {'class':'btn myfulltextbutton'} ).attr('href', $(this).attr('href')).text('Read Online').insertBefore(this)
+});
+
+//toggle other full text options
+firstFulltextLink = $("h4[data-auto='menu-section-header']:contains('Full Text')").parent().find("li[data-auto='link-container']:first");
+otherFulltextLinks = $("h4[data-auto='menu-section-header']:contains('Full Text')").parent().find("li[data-auto='link-container']:not(:first)").toggle();
+
+if (otherFulltextLinks.length != '0') {
+     
+$('<a>').text('more options').wrap('<div/> {"id" : "more-options-link-wrapper"}').click(function(){
+otherFulltextLinks.toggle();
+$(this).text(function(i, text){
+          return text === "more options" ? "hide options" : "more options";
+      });
+}).appendTo(firstFulltextLink.parent());
+
+}
+
+
+
+$('.open-url-resolver').show();
+
+
+});
