@@ -1,6 +1,6 @@
 //Need to create link within HLM with all metadata elements! Hover Text should be: getData
 //http://resolver.ebscohost.com/openurl?&issn={issn}&issn1={issn1}&eissn={eissn}&eissn1={eissn1}&an={an}&doi={doi}&sici={sici}&source={generictitle}&title={atitle}&author={au}&authors={authors}&volume={volume}&issue={issue}&strtpage={spage}&pagect={tpages}&pages={pages}&date={date}&datei={datei}&year={year}&isbn={isbn}&pmid={pmid}&publisher={pub}
-//originally created by EBSCO
+//originally created by EBSCO - http://imageserver.ebscohost.com/branding/EDS/js/fulltextfindercitationstyle.js
 
 
 var getData = jQuery("a[title='getData']").attr("href");
