@@ -1,0 +1,153 @@
+<!--BEGIN: springshare-placard -->
+<style id="springshare-placard__style">
+#springshare-placard{
+  border-width: 2px; 
+  position: fixed; 
+  bottom:0; 
+  right: 0px; 
+  border-width:4px 0 0 4px;
+  border-color: #3af;
+  border-radius:6px 0 0 0;
+  transition: opacity 1000ms; 
+  z-index: 100;
+  background:#fff;
+  padding:10px;
+  border-style: solid;
+  box-shadow: -10px -11px 20px -11px rgba(0,0,0,0.45);
+}
+
+#springshare-placard__close{
+  float:right;
+  margin:10px;
+  }
+
+#springshare-placard__libguides {
+  clear:both;
+}
+</style>
+
+
+<script type='text/javascript' id="springshare-placard__script">
+   var jq = document.createElement('script');
+    jq.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js";
+    document.getElementsByTagName('head')[0].appendChild(jq);
+    var trackUpdatedSpringsharePlacard = setInterval(function() {
+        if (window.jQuery) {
+            clearInterval(trackUpdatedSpringsharePlacard);
+            runScript();
+        }
+    }, 10);
+
+function runScript() {
+
+console.log("updated-springshare-script");
+
+//append styles to parent <head/>
+$("head",window.parent.document).append($("#springshare-placard__style"));
+
+//build placard container
+var placard_container = $('<div id="springshare-placard" style="opacity:0"><div id="springshare-placard__libguides"><div class="springshare-placard__heading"><h3>Can\'t find what you\'re looking for? Try a Research Guide.</h3></div><div id="springshare-placard__data-target"></div></div><button id="springshare-placard__close">close</button></div>');
+
+//append placard container to parent <body/>
+$("body", window.parent.document).append(placard_container);
+
+//set up API parameters
+var libguidesAPI = "https://lgapi-us.libapps.com/1.1/guides/";
+var site_id = "5498";
+var key = "846cb117b98a6f3bef464e6a7be71499";
+var search_terms = $("#Searchbox1", window.parent.document).val(); // where to find search terms
+var search_match = "2"; // 1 = exact, 2 = contains
+var status = "1";
+// 0 - Unpublished
+// 1 - Published
+// 2 - Private
+// 3 - Submit for Review
+var group_ids = "8534";
+var sort_by = "name";
+// name - Guide name
+// count_hit - Guide hits since the beginning of the year
+// published - Published date
+// relevance - Full-text index
+
+
+// where to insert the list of guides
+var target = "#springshare-placard__data-target";
+console.log(search_terms);
+
+// reset widget_closed flag
+var widget_closed = false; 
+ 
+//show or hide widget based on scroll position
+function displayPlacard() {
+  $(window.parent).on("scroll", function() {
+    console.log(widget_closed);
+    if (widget_closed == true) {
+      return false;
+    } else {
+      var y_scroll_pos = this.pageYOffset;
+      //alert("y_scroll_pos:" + y_scroll_pos);
+      var scroll_pos_test = 200; // scroll position at which to start displaying widget
+      var scroll_pos_test_length = 1000; // display widget for this amount of scroll distance
+      if (
+        y_scroll_pos > scroll_pos_test &&
+        y_scroll_pos < scroll_pos_test + scroll_pos_test_length
+      ) {
+        $("#springshare-placard", window.parent.document ).css("opacity", "1");
+      } else {
+        $("#springshare-placard",window.parent.document).css("opacity", "0");
+      }
+    }
+  });
+}
+
+// get JSON-encoded data and do something with it
+function getGuides() {
+  var guide_list = "";
+
+  $.getJSON(
+    libguidesAPI,
+    {
+      site_id: site_id,
+      key: key,
+      search_match: search_match,
+      status: status,
+      search_terms: search_terms,
+      group_ids: group_ids,
+      sort_by: sort_by
+    },
+    function(data) {
+      //don't do anything if libguides API doesn't return anything
+      if (data == 0) {
+        console.log("no matching guides");
+      } else {
+        //for each guide returned by API, do something
+        $.each(data, function(i, guide) {
+          //build guide list using guide name and url
+         var guide_link = $("<a>").attr("href",guide.url);
+          var guide_list_item = $("<li>").text(guide.name).wrapInner(guide_link);
+          $(target, window.parent.document).append(guide_list_item);
+        });
+        $(target, window.parent.document).wrapInner("<ul></ul>");
+        //we've added the guides returned from API call to our container, now display them
+        displayPlacard();
+      }
+    }
+  );
+}
+
+// attach click event to button to close widget and set flag so it won't appear again unless page is refreshed.
+$("#springshare-placard__close", window.parent.document).click(function() {
+  $("#springshare-placard", window.parent.document).css("opacity", "0");
+  widget_closed = true;
+});
+
+//Don't do anything unless there are search terms
+if (!search_terms) {
+  console.log("no search terms");
+} else {
+  getGuides();
+}
+
+}
+
+</script>
