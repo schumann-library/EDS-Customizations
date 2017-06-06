@@ -95,7 +95,10 @@ function getGuides() {
       //for each guide returned by API, do something
       $.each(data, function(i, guide) {
         //build a list of guides using guide name and url
-        var guide_link=$("<a>").attr("href", guide.url);
+        var guide_link=$("<a>").attr({
+                               href : guide.url,
+                               target : '_blank'
+                                 });
         var guide_list_item=$("<li>").text(guide.name).wrapInner(guide_link);
         $(target, window.parent.document).append(guide_list_item);
       }
@@ -139,20 +142,20 @@ function displayPopup() {
   //console.log(pctScrolled + "% scrolled");
   var y_scroll_pos=pctScrolled;
   //alert("y_scroll_pos:" + y_scroll_pos);
-  var scroll_pos_test=10; // scroll percentage at which to start displaying widget
+  var scroll_pos_test=25; // scroll percentage at which to start displaying widget
   var scroll_pos_test_length=101; // scroll percentage at which to hide widget
   if (y_scroll_pos > scroll_pos_test && y_scroll_pos < scroll_pos_test_length) {
-    $("#springshare-popup", window.parent.document).css("opacity", "1");
+    $("#springshare-popup", window.parent.document).css({"display": "fixed", "opacity" : "1"});
   }
   else {
-    $("#springshare-popup", window.parent.document).css("opacity", "0");
+    $("#springshare-popup", window.parent.document).css({"opacity":"0", "display" : "initial"});
   }
 }
 }
 
 // attach click event to button to close widget and set flag so it won't appear again unless page is refreshed.
 $("#springshare-popup__close", window.parent.document).click(function() {
-  $("#springshare-popup", window.parent.document).css("opacity", "0");
+  $("#springshare-popup", window.parent.document).css({"opacity":"0", "display" : "initial"});
   widget_closed=true;
 });
 
