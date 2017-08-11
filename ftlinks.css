@@ -1,0 +1,14 @@
+.record-formats-wrapper.externalLinks a {
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline;
+    float: none;
+    font-weight: 600;
+    font-family: sans-serif;
+    text-decoration: none;
+    background: rgb(51, 122, 183);
+    border: 1px solid rgb(46, 109, 164);
+    border-radius: 3px 3px 3px 3px;
+    padding: 5px 10px;
+}
