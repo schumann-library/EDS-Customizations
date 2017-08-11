@@ -12,3 +12,7 @@
     border-radius: 3px 3px 3px 3px;
     padding: 5px 10px;
 }
+
+.record-icon ~ div {
+    overflow: visible;
+}
