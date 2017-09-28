@@ -8,14 +8,15 @@
 
 <style id="springshare-popup__style">
 #springshare-popup {
+  display:none;
   position: fixed;
   bottom: 50%;
   right: 0px;
   border-width: 4px 0 4px 4px;
   border-color: #3af;
   border-radius: 6px 0 0 6px;
-  transition: opacity 1000ms;
-  /*z-index: 100; */
+  /*transition: opacity 1000ms;*/
+ /* z-index: 100; */
   font-size:14px;
   background: #fff;
   padding: 10px;
@@ -43,7 +44,7 @@
 $("head", window.parent.document).append($("#springshare-popup__style"));
 //build popup container
 var popup_heading="Can't find what you're looking for? Try a Research Guide.";
-var popup_container=$('<div id="springshare-popup" style="opacity:0"><div id="springshare-popup__libguides"><div class="springshare-popup__heading"><h3>'+popup_heading+'</h3></div><div id="springshare-popup__data-target"></div></div><button id="springshare-popup__close">close</button></div>');
+var popup_container=$('<div id="springshare-popup" ><div id="springshare-popup__libguides"><div class="springshare-popup__heading"><h3>'+popup_heading+'</h3></div><div id="springshare-popup__data-target"></div></div><button id="springshare-popup__close">close</button></div>');
 //append popup container to parent <body/>
 $("body", window.parent.document).append(popup_container);
 // where to insert the list of guides
@@ -53,7 +54,7 @@ var target="#springshare-popup__data-target";
 var libguidesAPI="https://lgapi-us.libapps.com/1.1/guides/";
 var site_id="5498";
 var key="846cb117b98a6f3bef464e6a7be71499";
-var search_terms=$("#breadboxContent a.search-terms", window.parent.document).text(); // where to find search terms
+var search_terms=$("#Searchbox1", window.parent.document).val(); // where to find search terms
 var search_match="2"; // 1 = exact, 2 = contains
 var status="1";
 // 0 - Unpublished
@@ -145,17 +146,17 @@ function displayPopup() {
   var scroll_pos_test=25; // scroll percentage at which to start displaying widget
   var scroll_pos_test_length=101; // scroll percentage at which to hide widget
   if (y_scroll_pos > scroll_pos_test && y_scroll_pos < scroll_pos_test_length) {
-    $("#springshare-popup", window.parent.document).css({"display": "fixed", "opacity" : "1"});
+    $("#springshare-popup", window.parent.document).fadeIn(1000);
   }
   else {
-    $("#springshare-popup", window.parent.document).css({"opacity":"0", "display" : "initial"});
+    $("#springshare-popup", window.parent.document).fadeOut(1000);
   }
 }
 }
 
 // attach click event to button to close widget and set flag so it won't appear again unless page is refreshed.
 $("#springshare-popup__close", window.parent.document).click(function() {
-  $("#springshare-popup", window.parent.document).css({"opacity":"0", "display" : "initial"});
+  $("#springshare-popup", window.parent.document).fadeOut();
   widget_closed=true;
 });
 
