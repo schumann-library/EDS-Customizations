@@ -7,6 +7,45 @@ img.logo-img { display:inline-block; margin: 1em; width:500px; max-width:100%;
 .customerLogo {display:none;}
 
 
+/* BEGIN: style EDS links */
+
+.record-formats-wrapper.externalLinks span[id^="format"] {
+    display:inline-block;
+}
+
+
+.record-formats-wrapper.externalLinks a {
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: sans-serif;
+    text-decoration: none;
+    float:none;
+    display:inline;
+    padding:0;
+   }
+
+.record-formats-wrapper span.custom-link, .record-formats-wrapper.externalLinks > a, .record-formats-wrapper.externalLinks span[id^="format"] a  {
+    
+    display: inline-block;
+    float: none;
+    background: rgb(51, 122, 183);
+    border: 1px solid rgb(46, 109, 164);
+    border-radius: 3px 3px 3px 3px;
+    padding: 5px 10px;
+    margin: 5px;
+    vertical-align:middle;
+}
+
+
+.record-formats-wrapper .custom-link .icon-image, .record-formats-wrapper .custom-link img, .record-formats-wrapper.externalLinks span[id^="format"] img, .record-formats-wrapper .filesize  {
+    display: none;
+}
+
+
+/* END: style EDS links */
+
 
 #footerControl {
 	display: none !important;
@@ -14,4 +53,12 @@ img.logo-img { display:inline-block; margin: 1em; width:500px; max-width:100%;
 
 
 </style>
+
 <script type="text/javascript" language="Javascript" src="//widgets.ebscohost.com/prod/common/branding/pubfinder-title-browse.js"></script>
+
+
+<!--Define order of RTAC locations here--these should exactly match what is in EDS. Define a delimiter and use it to separate locations in the below. If you want to view more than a single location at a time, change the number value within the numToShow attribute-->
+<div id="locationsort" style="display:none;" data-delimiter="|" data-numToShow="1">Wentworth|Earl|Emerson|Emmanuel|Lesley|MassArt|MCPHS|MFA|Museum of Fine Arts|New England College of Optometry|NECO|New England Conservatory|Wheelock</div>
+
+<!-- Sort RTAC -->
+<script type="text/javascript" src="https://widgets.ebscohost.com/prod/simplekey/rtaclocationsort/rtaclocationsort.js"></script>
