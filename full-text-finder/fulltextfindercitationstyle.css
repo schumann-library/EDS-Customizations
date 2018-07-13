@@ -58,6 +58,10 @@
     display: none;
 }
 
+.link-coveragedates {
+    display: block;
+}
+
 .media-content {
 	display:block;
 }
