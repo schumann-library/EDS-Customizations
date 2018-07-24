@@ -2,12 +2,29 @@
 
 img.logo-img { display:inline-block; margin: 1em; width:500px; max-width:100%;
 }
+
+/* 5/2/2018 - unfloat the logo because ebsco increased the default dimensions of the search form, which caused the logo to be too small. */ 
+.branding-Beside .logo {float:none;}
+
 .branding-Beside img.logo-img {display:inline;}
 
 .customerLogo {display:none;}
 
 
 /* BEGIN: style EDS links */
+
+/*format full-text links in detailed record metadata*/
+a[data-auto="ep_link"] {
+    color: red;
+    background: rgb(51, 122, 183);
+    border: 1px solid rgb(46, 109, 164);
+    border-radius: 3px 3px 3px 3px;
+    padding: 5px 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
 
 .record-formats-wrapper.externalLinks span[id^="format"] {
     display:inline-block;
