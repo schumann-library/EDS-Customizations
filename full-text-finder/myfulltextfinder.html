@@ -49,12 +49,29 @@ img.logo-img {
     margin-bottom: 10px;
 }
 
+li[data-auto="link-container"] {
+  display: grid;
+  align-items: normal;
+  grid-auto-columns: auto 1fr;
+  grid-auto-rows: min-content;
+  grid-column-gap: 1rem;
+  padding: 1rem 0;
+}
+
+a[data-auto="menu-link"],
+.link-coveragedates,
+.link-embargo {
+  grid-column: 2;
+}
+
 .myfulltextbutton {
-    float:left;
+    align-self: start;
+    grid-row: 1 / span 2;
+    grid-column: 1;
     color: white;
     background: #337ab7;
     border-color: #2e6da4;
-    margin: 0 20px 0 0;
+    
 }
 .myfulltextbutton:active{
     color: #fff;
@@ -74,9 +91,7 @@ img.logo-img {
     border-color: #122b40;
 }
 
-.myfulltextbutton + a[data-auto="menu-link"] {
-    display:block;
-}
+
 
 /*hide icons on links following fulltextbuttons */
 .myfulltextbutton + a[data-auto="menu-link"] img[data-auto="icon"] {
@@ -88,9 +103,6 @@ img.logo-img {
     display: none;
 }
 
-.link-coveragedates {
-    display: block;
-}
 
 .media-content {
 	display:block;
@@ -136,10 +148,11 @@ img.logo-img {
     <div id="form_14a55db141a7e05fbb4b6effbf057676"></div>
     <script async type="text/javascript" src="//wit.libsurveys.com/form_loader.php?id=14a55db141a7e05fbb4b6effbf057676"></script>
 </div>
+
 <script>
 $(function() {
     if ($("h4[data-auto='menu-section-header']:contains('Full Text')").length) {
-        $( "<a>", {'id':'getHelpContainer--link'} ).attr('href', '#').text('Click here to request help accessing this resource.').appendTo('#getHelpContainer');
+        $( "<a>", {'id':'getHelpContainer--link'} ).attr('href', '#').text('Click here to request help accessing this resource.').appendTo('section.open-url-resolver');
         $('#getHelpContainer--link').click(function() {
             $('#getHelpContainer--link').hide();
             $('#getHelpContainer div').slideToggle();
